@@ -6,9 +6,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-//@SpringBootConfiguration
-//@EnableAutoConfiguration
-//@ComponentScan(basePackages = { "dev.huffstler.searobinclassic.controller" })
 @SpringBootApplication
 public class SeaRobinClassicApplication {
 
