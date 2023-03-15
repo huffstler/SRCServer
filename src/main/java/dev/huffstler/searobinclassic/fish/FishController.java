@@ -14,17 +14,17 @@ public class FishController {
 
     @GetMapping("/name/{fishName}")
     public Fish getFishFromName(@PathVariable("fishName") String name){
-        return new Fish(UUID.randomUUID(), name, 74);
+        return new Fish(UUID.randomUUID(), name);
     }
 
     @GetMapping("/id/{fishId}")
     public Fish getFishFromId(@PathVariable("fishId") UUID id){
-        return new Fish(id, "patrick", 74);
+        return new Fish(id, "patrick");
     }
 
     @GetMapping
     public List<Fish> getAllFish(){
-        return List.of(new Fish(UUID.randomUUID(), "Alexandria", 60));
+        return List.of(new Fish(UUID.randomUUID(), "alex"));
     }
 
 }
