@@ -1,23 +1,26 @@
-package dev.huffstler.searobinclassic.haul;
-
-import dev.huffstler.searobinclassic.fish.Fish;
+package dev.huffstler.searobinclassic.parse;
 
 public class Haul {
-    Fish fish;
+
+
+
+    String angler;
+    String fish;
     float length;
     boolean lureUsed;
 
-    public Haul(Fish fish, float length, boolean lureUsed){
+    public Haul(String angler, String fish, float length, boolean lureUsed){
+        this.angler = angler;
         this.fish = fish;
         this.length = length;
         this.lureUsed = lureUsed;
     }
 
-    public Fish getFish() {
+    public String getFish() {
         return fish;
     }
 
-    public void setFish(Fish fish) {
+    public void setFish(String fish) {
         this.fish = fish;
     }
 
@@ -35,5 +38,13 @@ public class Haul {
 
     public void setLureUsed(boolean lureUsed) {
         this.lureUsed = lureUsed;
+    }
+
+    public String getAngler() {
+        return angler;
+    }
+
+    public void setAngler(String angler) {
+        this.angler = angler;
     }
 }
