@@ -1,15 +1,19 @@
 package dev.huffstler.searobinclassic.parse;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({ "angler", "fish", "length", "lureUsed" })
 public class Haul {
-
-
 
     String angler;
     String fish;
     float length;
     boolean lureUsed;
 
+    public Haul(){}
+
     public Haul(String angler, String fish, float length, boolean lureUsed){
+        this();
         this.angler = angler;
         this.fish = fish;
         this.length = length;

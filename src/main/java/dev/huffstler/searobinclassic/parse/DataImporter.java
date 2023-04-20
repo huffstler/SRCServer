@@ -4,17 +4,15 @@ import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import dev.huffstler.searobinclassic.rules.Rules;
-import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
 public class DataImporter {
 
     public DataImporter(){}
@@ -24,8 +22,6 @@ public class DataImporter {
 
     public Map<String, Float> getScoreboard(File file) throws IOException {
 
-        System.out.println("In dataimporter");
-
         Map<String, Float> scoreboard = new HashMap<>();
         Map<String, List<Float>> anglerTotals = new HashMap<>();
 
@@ -33,8 +29,6 @@ public class DataImporter {
 
         // Might not work as single string, not sure how it handles
         String doc = Files.readString(file.toPath());
-
-        System.out.println(doc);
 
         try (MappingIterator<Haul> it = mapper.readerFor(Haul.class).with(schema).readValues(doc)){
 
@@ -50,8 +44,10 @@ public class DataImporter {
                     // audit logging here
                     anglerTotals.get(haul.getAngler()).add(haulScore);
                 } else {
+                    var tmp = new ArrayList<Float>();
+                    tmp.add(haulScore);
                     // audit logging here
-                    anglerTotals.put(haul.getAngler(), List.of(haulScore));
+                    anglerTotals.put(haul.getAngler(), tmp);
                 }
             }
 
