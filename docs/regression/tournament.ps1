@@ -1,9 +1,6 @@
 $tourneyCreateBody = @{
     "admin"="patrick"
-    "password"="fuckaroundfindout"
+    "password"="fuckinaround"
 }
 
-Invoke-RestMethod -Uri http://localhost:8080/tournament/foobar -Method Get
-
-Invoke-RestMethod -Uri http://localhost:8080/tournament/create -Method Post `
--Body $tourneyCreateBody
+Invoke-RestMethod -Uri http://localhost:8080/api/tournament -Method Get
