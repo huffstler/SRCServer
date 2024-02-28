@@ -12,7 +12,7 @@ public class AnglerModelAssembler implements RepresentationModelAssembler<Angler
     @Override
     public EntityModel<Angler> toModel(Angler angler) {
         return EntityModel.of(angler,
-                linkTo(methodOn(AnglerController.class).getAngler).withSelfRel(),
+                linkTo(methodOn(AnglerController.class).getAnglerById(angler.getId())).withSelfRel(),
                 linkTo(methodOn(AnglerController.class).getAllAnglers()).withRel("allAnglers"));
     }
 }
