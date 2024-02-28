@@ -12,6 +12,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class FishModelAssembler implements RepresentationModelAssembler<Fish, EntityModel<Fish>> {
     @Override
     public EntityModel<Fish> toModel(Fish fish) {
-        return EntityModel.of(fish, linkTo(methodOn(FishController.class).getFishByName(fish.getId())).withSelfRel(), linkTo(methodOn(FishController.class).getAllFish()).withRel("allFish"));
+        return EntityModel.of(fish,
+                linkTo(methodOn(FishController.class).getFishById(fish.getId())).withSelfRel(),
+                linkTo(methodOn(FishController.class).getAllFish()).withRel("allFish"));
     }
 }

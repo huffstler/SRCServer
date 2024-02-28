@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -38,7 +36,7 @@ public class FishController {
     }
 
     @GetMapping("/{id}")
-    public EntityModel<Fish> getFishByName(@PathVariable Long id) {
+    public EntityModel<Fish> getFishById(@PathVariable Long id) {
         Fish fish = new Fish();
         try {
             fish = fishRepository.findById(id).orElseThrow(ClassNotFoundException::new);
