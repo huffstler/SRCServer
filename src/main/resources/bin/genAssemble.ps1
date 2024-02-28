@@ -15,8 +15,8 @@ public class ${className}ModelAssembler implements RepresentationModelAssembler<
     @Override
     public EntityModel<${className}> toModel(${className} $($className.ToLower())) {
         return EntityModel.of(($($className.ToLower()),
-                linkTo(methodOn(${className}Controller.${className}).TODO.withSelfRel(),
-                linkTo(methodOn(${className}Controller.${className}).TODO.withRel("all${className}"));
+                linkTo(methodOn(${className}Controller.class).TODO).withSelfRel(),
+                linkTo(methodOn(${className}Controller.class.TODO).withRel("all${className}"))));
     }
 }
 "@
