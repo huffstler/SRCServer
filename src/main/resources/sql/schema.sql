@@ -28,6 +28,16 @@ create table searobin.tournaments (
 );
 CREATE INDEX tournament_name_idx on searobin.tournaments (tournament_name);
 
+-- used for mapping anglers to tournaments and vice versa
+create table searobin.membership (
+	id uuid primary key default gen_random_uuid(),
+	tournament_id uuid references searobin.tournaments (id),
+	organization_id uuid references searobin.organization (id),
+	angler_id uuid references searobin.anglers (id),
+	is_org_admin boolean default 'false',
+	is_tourney_admin boolean default 'false'
+);
+
 create table searobin.anglers (
 	id uuid primary key default gen_random_uuid(),
 	username text unique, -- add index on this field
@@ -40,6 +50,7 @@ create table searobin.anglers (
 CREATE INDEX angler_name_idx on searobin.anglers (username);
 
 create table searobin.catches (
+    -- I don't think we need a new uuid for each catch. could probably make an index based on 3 or 4 other columns?
 	id uuid primary key default gen_random_uuid(),
 	-- maybe replace the two below with membership_id at some point?
 	tournament_id uuid references searobin.tournaments (id),
@@ -51,16 +62,6 @@ create table searobin.catches (
 	fish_length real,
 	used_lure boolean default 'false',
 	catch_time timestamp default now()
-);
-
--- used for mapping anglers to tournaments and vice versa
-create table searobin.membership (
-	id uuid primary key default gen_random_uuid(),
-	tournament_id uuid references searobin.tournaments (id),
-	organization_id uuid references searobin.organization (id),
-	angler_id uuid references searobin.anglers (id),
-	is_org_admin boolean default 'false',
-	is_tourney_admin boolean default 'false'
 );
 
 create table searobin.tiers(
