@@ -1,0 +1,14 @@
+{
+    "name": "Sea Robin Classic Scoresheet",
+    "short_name": "SRCS",
+    "description": "PWA for the SRC's Scoresheet that's submitted at the end of the tournament for calculating scores",
+    "start_url": "huffstler.github.io/SRC",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "img/",
+            "type": "img/",
+            "sizes": "256x256"
+        }
+    ]
+}
